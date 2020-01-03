@@ -16,11 +16,9 @@ C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\UMJA.exe.config
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\UMJA.exe
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\UMJA.pdb
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA.csprojAssemblyReference.cache
-C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\MainWindow.g.cs
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\App.g.cs
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA_MarkupCompile.cache
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA_MarkupCompile.lref
-C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\MainWindow.baml
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA.g.resources
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA.Properties.Resources.resources
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA.csproj.GenerateResource.cache
@@ -32,3 +30,5 @@ C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\Microsoft.WindowsAPIC
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\UMJA.csproj.CopyComplete
+C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\MainWindow.g.cs
+C:\Users\TH24\Desktop\HTL\Aud\4.Klasse\Umja\UMJA\obj\Debug\MainWindow.baml

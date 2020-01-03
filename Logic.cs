@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using UMJA.Utility;
 
@@ -12,9 +13,13 @@ namespace UMJA
     {
         public static void ReadDocument(string path)
         {
+
+            // (Application.Current.Windows[0] as MainWindow).lsbLogConsole.Items.Add("Sth changed"); 
+
+
             XmlDocument doc = new XmlDocument();
             doc.Load("C:/Users/TH24/Desktop/HTL/Aud/4.Klasse/Umja/UMJA/uml.xml");
-            List<GroupNode> groupNodes = new List<GroupNode>();
+            List<GroupNode> groupNodes = new List<GroupNode>(); 
 
             var genericGroupNodes = doc.GetElementsByTagName("y:GenericGroupNode");
             foreach (XmlNode groupNode in genericGroupNodes)
@@ -26,8 +31,6 @@ namespace UMJA
                     groupNodes.Add(new GroupNode { Id = idOfGroup, Name = nameOfGroup });
                 }
             }
-
-
 
             var classNodeLabels = doc.GetElementsByTagName("y:UMLClassNode");
 

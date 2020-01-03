@@ -29,9 +29,9 @@ namespace UMJA
 
         private bool windowLoaded = false;
 
-        public string Ordnername { get; set; } = "Projekt";
+        public string Ordnername { get; set; }
         public string Speicherort { get; set; } =  $@"C:\Users\{Environment.UserName}\Documents\";
-        public string AusgangsdateiPfad { get; set; } = "Drop File";
+        public string AusgangsdateiPfad { get; set; }
 
         #endregion
 
@@ -76,8 +76,9 @@ namespace UMJA
         {
             var dialog = new CommonOpenFileDialog();
             dialog.IsFolderPicker = true;
+            dialog.InitialDirectory = $@"C:\Users\{Environment.UserName}\Documents\";
 
-            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 txtSpeicherort.Text = $"{dialog.FileName}\\";
                 lsbLogConsole.Items.Add($"Der Speicherort wurde unter {dialog.FileName} festgelegt");
@@ -98,7 +99,7 @@ namespace UMJA
 
         private void BtnConvert_Click(object sender, RoutedEventArgs e)
         {
-            Logic.ReadDocument("uml.xml");
+            Logic.ReadDocument(AusgangsdateiPfad);
             lsbLogConsole.Items.Add($"Die Ausgangsdatei wurde erfolgreich konvertiert.");
         }
 
