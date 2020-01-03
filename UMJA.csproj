@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GroupNode.cs" />
+    <Compile Include="Utility\JavaEnumeration.cs" />
+    <Compile Include="Utility\JavaClass.cs" />
+    <Compile Include="Utility\JavaInterface.cs" />
+    <Compile Include="Utility\JavaObject.cs" />
+    <Compile Include="Utility\Method.cs" />
+    <Compile Include="Utility\Variable.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="uml.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="uml - Copy.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
