@@ -13,7 +13,7 @@ namespace UMJA
         public static void ReadDocument(string path)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load("C:/Users/max/source/repos/UMJA/UMJA/uml.xml");
+            doc.Load("C:/Users/TH24/Desktop/HTL/Aud/4.Klasse/Umja/UMJA/uml.xml");
             List<GroupNode> groupNodes = new List<GroupNode>();
 
             var genericGroupNodes = doc.GetElementsByTagName("y:GenericGroupNode");
