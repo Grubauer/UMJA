@@ -17,6 +17,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Drawing;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace UMJA
 {
@@ -99,8 +100,13 @@ namespace UMJA
 
         private void BtnConvert_Click(object sender, RoutedEventArgs e)
         {
-            Logic.ReadDocument(AusgangsdateiPfad);
-            lsbLogConsole.Items.Add($"Die Ausgangsdatei wurde erfolgreich konvertiert.");
+            if(Directory.Exists(Speicherort) && AusgangsdateiPfad.Split('.').Last().Equals("graphml"))
+            {
+                Logic.ReadDocument(AusgangsdateiPfad);
+                lsbLogConsole.Items.Add($"Die Ausgangsdatei wurde erfolgreich konvertiert.");
+            }
+            else
+                lsbLogConsole.Items.Add($"Die Ausgangsdatei konnte aufgrund falscher Angaben nicht konvertiert werden.");
         }
 
         private void Ordnername_TextChanged(object sender, TextChangedEventArgs e)
