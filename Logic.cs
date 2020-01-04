@@ -107,7 +107,15 @@ namespace UMJA
                 string targetGroup = target.Split(':')[0];
                 string targetNode = target;
 
-                bool sourceHasToImportTarget = !source.Equals(target);
+                var sourceClass = objects
+                        .Where(x => x.NodeId.Equals(source))
+                        .First().Name;
+
+                var targetClass = objects
+                        .Where(x => x.NodeId.Equals(target))
+                        .First().Name;
+
+                bool sourceHasToImportTarget = !sourceGroup.Equals(targetGroup);
 
                 string lineType = "";
                 string sourceArrowType = "";
@@ -138,17 +146,26 @@ namespace UMJA
 
                 //implements:
                 if(lineType.Equals("dashed")&&targetArrowType.Equals("white_delta"))
-                {
                    objects
                         .Where(x => x.NodeId.Equals(source))
-                        .Select(x => (JavaClass)x)
                         .First()
                         .Implements
                         .Add(objects.Where(x => x.NodeId.Equals(target))
                         .First());
+
+                if (sourceHasToImportTarget)
+                {
+                    objects
+                        .Where(x => x.NodeId.Equals(source))
+                        .First()
+                        .ObjectsToImport
+                        .Add(objects.Where(x => x.NodeId.Equals(target))
+                        .First());
                 }
-                
+
             }
+
+            objects.ForEach(x => Console.WriteLine(x.ToString()));
 
 
             //var allNodes = doc.GetElementsByTagName("node");

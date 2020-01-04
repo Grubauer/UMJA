@@ -11,7 +11,7 @@ namespace UMJA.Utility
         
         public List<Method> Methods { get; set; }
         public List<Variable> Variables { get; set; }
-        public List<JavaObject> ObjectsToImport { get; set; }
-        public List<JavaObject> Implements { get; set; } = new List<JavaObject>();
+      
+       
     }
 }

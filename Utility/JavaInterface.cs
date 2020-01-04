@@ -10,6 +10,6 @@ namespace UMJA.Utility
     {
         public List<Method> Methods { get; set; }
         public List<Variable> Variables { get; set; }
-        public List<JavaObject> ObjectsToImport { get; set; }
+        
     }
 }
