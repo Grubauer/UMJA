@@ -23,7 +23,8 @@ namespace UMJA
         public MainWindow()
         {
             InitializeComponent();
-            Logic.ReadDocument("uml.xml");
+           // Logic.ReadDocument("C:/Users/max/source/repos/UMJA/UMJA/uml.xml");
+            Logic.ReadDocument("C:/Users/max/Documents/orig_welsch_uml.graphml");
 
         }
     }
