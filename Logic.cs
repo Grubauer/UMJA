@@ -10,8 +10,14 @@ namespace UMJA
 {
     public class Logic
     {
-        public static void ReadDocument(string path)
+        public static List<JavaObject> ReadDocument(string path)
         {
+            if (!path.EndsWith("graphml"))
+            {
+                //TODO fehler an GUI (am besten mit event)
+                return null;
+            }
+
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
             List<GroupNode> groupNodes = new List<GroupNode>();
@@ -164,122 +170,12 @@ namespace UMJA
                 }
 
             }
-
-            objects.ForEach(x => Console.WriteLine(x.ToString()));
-
-
-            //var allNodes = doc.GetElementsByTagName("node");
-
-
-            //foreach (XmlNode node in allNodes)
-            //{
-
-            //    if(node.Attributes["yfiles.foldertype"] != null && node.Attributes["yfiles.foldertype"].Value.Equals("group"))
-            //    {
-            //        var x = node.ChildNodes;
-
-            //        foreach (XmlNode childNode in node.ChildNodes)
-            //        {
-            //            var z = childNode.Name;
-            //        }
-
-            //        foreach (XmlNode genericGroupNode in node.SelectSingleNode("data").SelectSingleNode("y:ProxyAutoBoundsNode").SelectSingleNode("y:Realizers").ChildNodes)
-            //        {
-            //            var y = genericGroupNode.InnerText;
-            //        }
-
-
-            //    }
-            //}
-
-
-
-
-
-            //var classNodeLabels = doc.GetElementsByTagName("y:UMLClassNode");
-
-            //List<JavaObject> objects = new List<JavaObject>();
-
-            //foreach (XmlNode node in classNodeLabels)
-            //{
-            //    string className = "";
-            //    string stereotype = "";
-            //    string variableString = "";
-            //    string methodString = "";
-            //    string enumValues = "";
-
-
-            //    foreach (XmlNode childNode in node.ChildNodes)
-            //    {
-            //        if (childNode.Name.Equals("y:NodeLabel")) className = childNode.InnerText;
-            //        else if (childNode.Name.Equals("y:UML"))
-            //        {
-            //            stereotype = childNode.Attributes["stereotype"].Value;
-            //            if(stereotype.Equals("enumeration"))
-            //            {
-            //                foreach (XmlNode labelChildNode in childNode.ChildNodes)
-            //                {
-            //                    if (labelChildNode.Name.Equals("y:AttributeLabel")) enumValues = labelChildNode.InnerText;
-
-            //                }
-            //            }
-            //            else
-            //            {
-            //                foreach (XmlNode labelChildNode in childNode.ChildNodes)
-            //                {
-            //                    if (labelChildNode.Name.Equals("y:AttributeLabel")) variableString = labelChildNode.InnerText;
-            //                    if (labelChildNode.Name.Equals("y:MethodLabel")) methodString = labelChildNode.InnerText;
-            //                }
-            //            }
-            //        }
-
-
-            //    }
-            //    if(stereotype.Equals("enumeration"))
-            //    {
-            //        objects.Add(new JavaEnumeration { Name = className, Values = enumValues });
-            //    }
-            //    else
-            //    {
-            //        List<Method> methods = new List<Method>();
-            //        if (methodString != null && !methodString.Equals(string.Empty)) methods = Method.ParseMethods(methodString);
-            //        List<Variable> variables = new List<Variable>();
-            //        if (variableString != null && !variableString.Equals(string.Empty)) variables = Variable.ParseVariables(variableString);
-
-            //        objects.Add(new JavaClass { Name = className, Methods = methods, Variables = variables});
-            //    }
-
-
-            //}
-
-
-
-
-
-
-            //var nodelabels = doc.GetElementsByTagName("y:NodeLabel");
-
-            //foreach (XmlNode nodelabel in nodelabels)
-            //{
-            //    Console.WriteLine(nodelabel.InnerText);
-            //    foreach (XmlNode item in nodelabel.ChildNodes)
-            //    {
-            //        if (item.Name.Equals("y:LabelModel"))
-            //        {
-            //            Console.WriteLine("no class");
-            //        }
-            //    }
-
-            //}
-
-
-
-
+            // TODO 
+            // objects.ForEach(x => gui.log($"Klasse erstellt: {x.ToString()}"));
+            //if(objects.Count == 0) gui.log("Es wurden keine Klassen gefunden!");
+            return objects;
         }
 
-        private static JavaObject GetJavaObjectOfId(string id, List<JavaObject> javaObjects)
-        {
-            return javaObjects.Where(x => x.NodeId.Equals(id)).First();
-        }
+      
     }
 }
