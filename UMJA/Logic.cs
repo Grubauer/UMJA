@@ -173,6 +173,7 @@ namespace UMJA
             // TODO 
             // objects.ForEach(x => gui.log($"Klasse erstellt: {x.ToString()}"));
             //if(objects.Count == 0) gui.log("Es wurden keine Klassen gefunden!");
+            objects.ForEach(x => Console.WriteLine($"Klasse erstellt: {x.ToString()}"));
             return objects;
         }
 
