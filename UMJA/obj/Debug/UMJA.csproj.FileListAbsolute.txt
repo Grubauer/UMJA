@@ -26,3 +26,8 @@ C:\Users\max\source\repos\UMJA\UMJA\UMJA\obj\Debug\UMJA.Properties.Resources.res
 C:\Users\max\source\repos\UMJA\UMJA\UMJA\obj\Debug\UMJA.csproj.GenerateResource.cache
 C:\Users\max\source\repos\UMJA\UMJA\UMJA\obj\Debug\UMJA.exe
 C:\Users\max\source\repos\UMJA\UMJA\UMJA\obj\Debug\UMJA.pdb
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\obj\Debug\UMJA.csproj.CopyComplete

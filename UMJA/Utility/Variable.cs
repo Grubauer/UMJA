@@ -31,9 +31,9 @@ namespace UMJA.Utility
                     if (varString.Contains("="))
                     {
                         definedValue = varString.Split(':')[0].Split('=')[1].Trim();
-                        name = varString.Split(':')[0].Split('=')[0].Trim();
+                        name = varString.Split(':')[0].Split('=')[0].Trim().Remove(0, 1).Trim();
                     }
-                    else name = varString.Split(':')[0].Remove(0,1).Trim();
+                    else name = varString.Split(':')[0].Trim().Remove(0,1).Trim();
                         
                     bool isPrivate = varString.StartsWith("-");
                    
