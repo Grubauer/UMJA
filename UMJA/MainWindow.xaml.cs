@@ -143,10 +143,17 @@ namespace UMJA
 
         private void SetSourceFile(string speicherort)
         {
-            txtSourcePath.FontStyle = FontStyles.Normal;
-            txtSourcePath.Text = speicherort;
-            imgFile.Visibility = Visibility.Visible;
-            imgFile.Source = ShellFile.FromFilePath(speicherort).Thumbnail.BitmapSource;
+            try
+            {
+                txtSourcePath.FontStyle = FontStyles.Normal;
+                txtSourcePath.Text = speicherort;
+                imgFile.Visibility = Visibility.Visible;
+                imgFile.Source = ShellFile.FromFilePath(speicherort).Thumbnail.BitmapSource;
+            }
+            catch (FileNotFoundException ex)
+            {
+                lsbLogConsole.Items.Add("Die Datei wurde nicht gefunden!");
+            }
         }
 
         #endregion

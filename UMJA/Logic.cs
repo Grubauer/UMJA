@@ -95,7 +95,7 @@ namespace UMJA
                     if (stereotype.Equals("interface"))
                         objects.Add(new JavaInterface { Name = className, Methods = methods, Variables = variables, NodeId = nodeId });
                     else
-                        objects.Add(new JavaClass { Name = className, Methods = methods, Variables = variables, NodeId = nodeId, HasConstructor=hasConstructor, HasGetter = hasGetter, HasSetter = hasSetter });
+                        objects.Add(new JavaClass { Name = className, Methods = methods, Variables = variables, NodeId = nodeId, HasConstructor = hasConstructor, HasGetter = hasGetter, HasSetter = hasSetter });
                 }
 
 
@@ -204,7 +204,7 @@ namespace UMJA
             foreach (var item in javaObjects)
             {        // TODO
                      // einzelne Unterpunkte!;
-                //string pathPackages = @"C:/Users/sofia/Favorites/FolderTest";
+                     //string pathPackages = @"C:/Users/sofia/Favorites/FolderTest";
                 string pathPackages = subdir;
 
                 var splitPath = item.Package.Split('.');
@@ -237,21 +237,25 @@ namespace UMJA
                     // Create a file to write to.
                     using (StreamWriter sw = File.CreateText(path))
                     {
+                        sw.WriteLine($"package {item.Package};");
+                        sw.WriteLine();
+                        foreach (var impl in item.ObjectsToImport)
+                        {
+                            sw.WriteLine("import " + impl.Package + "." + impl.Name + ";");
+                        }
                         if (item.GetType().ToString().Equals("UMJA.Utility.JavaClass"))
                         {
-
-                            foreach (var impl in item.ObjectsToImport)
-                            {
-                                sw.WriteLine("import " + impl.Package + "." + impl.Name + ";");
-                            }
+                            
 
                             JavaClass javaClass = (JavaClass)item;
                             string imp = (javaClass.Implements.Count == 0) ? " " : " implements";
+
 
                             foreach (var i in javaClass.Implements)
                             {
                                 imp = imp + " " + i.Name;
                             }
+                            sw.WriteLine();
                             sw.WriteLine("public class " + item.Name + imp + " {");
                             foreach (var vari in javaClass.Variables)
                             {
@@ -270,20 +274,38 @@ namespace UMJA
                                 string parameter = "";
                                 foreach (var variable in method.Parameters)
                                 {
-                                    parameter += parameter + variable.ObjectType + " " + variable.Name + ", ";
+                                    parameter += variable.ObjectType + " " + variable.Name + ", ";
                                 }
                                 if (parameter.Length > 0)
                                 {
                                     parameter = parameter.Substring(0, parameter.Length - 2);
                                 }
 
-                                sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + " (" + parameter + ")" + " { }");
+                                if (Object.Equals(method.Name, "toString"))
+                                {
+                                    sw.WriteLine(Environment.NewLine + "@Override");
+                                    sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {" + Environment.NewLine + "   return \"\";" + Environment.NewLine + "}");
+                                }
+                                else if(method.Name.StartsWith("get") && javaClass.Variables.FindAll(x=> method.Name.Contains(x.Name.ToLower())).Count != 0)
+                                {
+                                    sw.WriteLine(Environment.NewLine + priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "() {");
+                                    sw.WriteLine($"return {javaClass.Variables.FindAll(x => method.Name.Contains(x.Name.ToLower())).First().Name};" );
+                                    sw.WriteLine("}");
+                                }
+                                else if (method.Name.StartsWith("set") && javaClass.Variables.FindAll(x => method.Name.ToLower().Contains(x.Name.ToLower())).Count > 0)
+                                {
+                                    sw.WriteLine(Environment.NewLine + priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {");
+                                    sw.WriteLine($"this.{method.Parameters[0].Name} = {method.Parameters[0].Name};");
+                                    sw.WriteLine("}");
+                                }
+                                else
+                                    sw.WriteLine(Environment.NewLine + priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {" + Environment.NewLine + Environment.NewLine + "}");
                             }
 
-                            if(javaClass.HasConstructor)
+                            if (javaClass.HasConstructor)
                             {
                                 var variablesForConstSB = new StringBuilder();
-                                javaClass.Variables.FindAll(x => !x.IsStatic).ToList().ForEach(x=> variablesForConstSB.Append($"{x.ObjectType} {x.Name}, "));
+                                javaClass.Variables.FindAll(x => !x.IsStatic).ToList().ForEach(x => variablesForConstSB.Append($"{x.ObjectType} {x.Name}, "));
 
                                 sw.WriteLine($"public {javaClass.Name}({variablesForConstSB.ToString().Remove(variablesForConstSB.ToString().Length - 2, 2)}) " + "{");
                                 javaClass.Variables.ForEach(x => sw.WriteLine($"this.{x.Name} = {x.Name};"));
@@ -292,14 +314,14 @@ namespace UMJA
                             }
 
                             if (javaClass.HasGetter)
-                                javaClass.Variables.ForEach(x => sw.WriteLine($"public {x.ObjectType} get{x.Name.ToCharArray()[0].ToString().ToUpper()}{x.Name.Remove(0,1)}() " + "{" + Environment.NewLine + $"    return {x.Name};" + Environment.NewLine + "}"));
-                           
-                            if(javaClass.HasSetter)
-                                javaClass.Variables.ForEach(x => sw.WriteLine($"public {x.ObjectType} set{x.Name.ToCharArray()[0].ToString().ToUpper()}{x.Name.Remove(0, 1)}({x.ObjectType} {x.Name}) " 
-                                    + "{" 
-                                    + Environment.NewLine 
-                                    + $"    this.{x.Name} =  {x.Name};" 
-                                    + Environment.NewLine 
+                                javaClass.Variables.ForEach(x => sw.WriteLine($"public {x.ObjectType} get{x.Name.ToCharArray()[0].ToString().ToUpper()}{x.Name.Remove(0, 1)}() " + "{" + Environment.NewLine + $"    return {x.Name};" + Environment.NewLine + "}"));
+
+                            if (javaClass.HasSetter)
+                                javaClass.Variables.ForEach(x => sw.WriteLine($"public {x.ObjectType} set{x.Name.ToCharArray()[0].ToString().ToUpper()}{x.Name.Remove(0, 1)}({x.ObjectType} {x.Name}) "
+                                    + "{"
+                                    + Environment.NewLine
+                                    + $"    this.{x.Name} =  {x.Name};"
+                                    + Environment.NewLine
                                     + "}"));
 
 
@@ -343,9 +365,10 @@ namespace UMJA
                                     parameter = parameter.Substring(0, parameter.Length - 2);
                                 }
 
-                                sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + " (" + parameter + ")" + " { }");
+
+                                sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + " (" + parameter + ");");
                             }
-                          
+
 
                             sw.WriteLine("}");
                         }
