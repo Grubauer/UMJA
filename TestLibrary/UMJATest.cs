@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UMJA;
+using UMJA.Utility;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -50,8 +52,8 @@ namespace TestLibrary {
         }
 
         [Fact]
-        public void T02_TestParseMethod() {
-            string methodString = "+ setName(name: String) : void\r\n+ setPrice(price: String) : void\r\n+ toString() : String";
+        public void T02_TestParseMethod_Multiple() {
+            string methodString = "+ setName() : void\r\n+ setPrice() : void\r\n+ toString() : void";
             var methods = Method.ParseMethods(methodString);
 
             int expectedCount = 3;
@@ -66,5 +68,23 @@ namespace TestLibrary {
 
 
         }
+
+        [Fact]
+        public void T03_TestParseMethod_Parameter() {
+            string methodString = "+ setName(name: String) : void";
+            var methods = Method.ParseMethods(methodString);
+
+            int expectedCount = 1;
+            string expectedMethodName1 = "setName";
+            string expectedParameterName = "name";
+            string expectedParameterType = "String";
+
+            Assert.Equal(expectedCount, methods.Count);
+            Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName1));
+            Assert.Equal(expectedParameterName, methods[0].Parameters[0].Name);
+            Assert.Equal(expectedParameterType, methods[0].Parameters[0].ObjectType);
+
+        }
+
     }
 }
