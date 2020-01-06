@@ -179,6 +179,19 @@ namespace UMJA
             }
             // TODO 
 
+
+
+            objects.Where(x => x.Implements.Count > 0 && x.GetType().ToString().Equals("UMJA.Utility.JavaClass"))
+                .Select(x => (JavaClass)x)
+                .ToList()
+                .ForEach(x => {
+                    List<Method> implementedMethods = new List<Method>();
+                    x.Implements.ForEach(y => implementedMethods.AddRange(((JavaInterface)y).Methods));
+                    implementedMethods.ForEach(y => y.Override = true);
+                    x.Methods.AddRange(implementedMethods);
+
+                    });
+
             objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
             if (objects.Count == 0) guiLog("Es wurden keine Klassen gefunden!");
             //objects.ForEach(x => Console.WriteLine($"Klasse erstellt: {x.ToString()}"));
@@ -245,7 +258,7 @@ namespace UMJA
                         }
                         if (item.GetType().ToString().Equals("UMJA.Utility.JavaClass"))
                         {
-                            
+
 
                             JavaClass javaClass = (JavaClass)item;
                             string imp = (javaClass.Implements.Count == 0) ? " " : " implements";
@@ -286,10 +299,19 @@ namespace UMJA
                                     sw.WriteLine(Environment.NewLine + "@Override");
                                     sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {" + Environment.NewLine + "   return \"\";" + Environment.NewLine + "}");
                                 }
-                                else if(method.Name.StartsWith("get") && javaClass.Variables.FindAll(x=> method.Name.Contains(x.Name.ToLower())).Count != 0)
+                                else if (method.Override)
+                                {
+                                    sw.WriteLine(Environment.NewLine + "@Override");
+                                    sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {" 
+                                        + Environment.NewLine 
+                                        + "    throw new UnsupportedOperationException(\"Not supported yet.\"); //To change body of generated methods, choose Tools | Templates."
+                                        + Environment.NewLine 
+                                        + "}");
+                                }
+                                else if (method.Name.StartsWith("get") && javaClass.Variables.FindAll(x => method.Name.ToLower().Contains(x.Name.ToLower())).Count != 0)
                                 {
                                     sw.WriteLine(Environment.NewLine + priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "() {");
-                                    sw.WriteLine($"return {javaClass.Variables.FindAll(x => method.Name.Contains(x.Name.ToLower())).First().Name};" );
+                                    sw.WriteLine($"return {javaClass.Variables.FindAll(x => method.Name.ToLower().Contains(x.Name.ToLower())).First().Name};");
                                     sw.WriteLine("}");
                                 }
                                 else if (method.Name.StartsWith("set") && javaClass.Variables.FindAll(x => method.Name.ToLower().Contains(x.Name.ToLower())).Count > 0)
@@ -346,7 +368,7 @@ namespace UMJA
                                 var priv = (vari.IsPrivate) ? "private" : "public";
                                 var stat = (vari.IsStatic) ? "static" : "";
 
-                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name);
+                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name + ";");
 
                             }
                             foreach (var method in javaClass.Methods)
@@ -366,7 +388,7 @@ namespace UMJA
                                 }
 
 
-                                sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + " (" + parameter + ");");
+                                sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ");");
                             }
 
 

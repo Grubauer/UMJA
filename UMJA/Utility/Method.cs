@@ -14,6 +14,7 @@ namespace UMJA.Utility
         public string ReturnObject { get; set; }
         public List<Variable> Parameters { get; set; }
         public bool IsStatic { get; set; }
+        public bool Override { get; set; }
 
 
         public static List<Method> ParseMethods(string mString)
