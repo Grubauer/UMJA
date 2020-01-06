@@ -51,3 +51,16 @@ C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\obj\Debug\UMJA.csproj.CoreCompileInput
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\obj\Debug\UMJA.csproj.CopyComplete
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\obj\Debug\UMJA.exe
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\obj\Debug\UMJA.pdb
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.abstractions.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.runner.reporters.net452.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.runner.utility.net452.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\FluentAssertions.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.assert.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.core.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.execution.desktop.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\FluentAssertions.pdb
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\FluentAssertions.xml
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.assert.xml
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.core.xml
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA\bin\Debug\xunit.execution.desktop.xml

@@ -11,7 +11,7 @@ namespace UMJA_Test_Martin
     {
 
         [TestMethod]
-        public void TestMethod1() //Check if projectforder exists  !!!Wichtig alle Aufrufe der Methode guiLog müssen beim Testen auskommentiert werden!!!
+        public void TestMethod1() //Check if projectfolder exists  !!!Wichtig alle Aufrufe der Methode guiLog müssen beim Testen auskommentiert werden!!!
         {
             var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
