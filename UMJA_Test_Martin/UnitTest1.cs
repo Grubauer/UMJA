@@ -83,7 +83,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void ParseVariables1() //Check variables  
         {
-            var variables = UMJA.Utility.Variable.ParseVariables("< y:AttributeLabel > +city : String");
+            var variables = UMJA.Utility.Variable.ParseVariables("<y:AttributeLabel>+ city : String");
 
             
             bool result = false;
@@ -98,18 +98,38 @@ namespace UMJA_Test_Martin
             Assert.AreEqual(true, result);
         }
 
+        [TestMethod]
         public void ParseVariables2() //Check variables  
         {
-            var variables = UMJA.Utility.Variable.ParseVariables("< y:AttributeLabel > +city : String");
+            var variables = UMJA.Utility.Variable.ParseVariables("-  postcode : int");
 
 
             bool result = false;
 
             foreach (var variable in variables)
             {
-                if (variable.IsFinal == false && variable.IsPrivate == false &&
-                    variable.IsStatic == false && variable.Name == "city" && variable.ObjectType == "String"
+                if (variable.IsFinal == false && variable.IsPrivate == true &&
+                    variable.IsStatic == false && variable.Name == "postcode" && variable.ObjectType == "int"
                     && variable.DefinedValue == null) result = true;
+            }
+
+            Assert.AreEqual(true, result);
+        }
+
+
+        [TestMethod]
+        public void ParseVariables3() //Check variables  
+        {
+            var variables = UMJA.Utility.Variable.ParseVariables("-&lt; u & gt; Student: STUDENT");
+
+
+            bool result = false;
+
+            foreach (var variable in variables)
+            {
+                if (variable.IsFinal == false && variable.IsPrivate == true ||
+                    variable.IsStatic == true && variable.Name == "STUDENT" && variable.ObjectType == "Student"
+                    ) result = true;
             }
 
             Assert.AreEqual(true, result);
