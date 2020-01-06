@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMJA", "UMJA\UMJA.csproj", "{A9D8D3E2-9AE9-4FE5-8A51-C6BA83A1ED14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMJA_Test_Martin", "UMJA_Test_Martin\UMJA_Test_Martin.csproj", "{AA7628DE-077F-4C0C-AE3F-BC527ACCA678}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A9D8D3E2-9AE9-4FE5-8A51-C6BA83A1ED14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D8D3E2-9AE9-4FE5-8A51-C6BA83A1ED14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D8D3E2-9AE9-4FE5-8A51-C6BA83A1ED14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7628DE-077F-4C0C-AE3F-BC527ACCA678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7628DE-077F-4C0C-AE3F-BC527ACCA678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7628DE-077F-4C0C-AE3F-BC527ACCA678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7628DE-077F-4C0C-AE3F-BC527ACCA678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

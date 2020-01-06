@@ -17,7 +17,7 @@ namespace UMJA
 
             if (!path.EndsWith("graphml"))
             {
-                guiLog("Die angegebene Datei ist keine graphml Datei!");
+                //guiLog("Die angegebene Datei ist keine graphml Datei!"); //nach Test wieder einkommentieren
                 return null;
             }
 
@@ -179,8 +179,8 @@ namespace UMJA
             }
             // TODO 
 
-            objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
-            if (objects.Count == 0) guiLog("Es wurden keine Klassen gefunden!");
+            //objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}")); //nach Test wieder einkommentieren
+            //if (objects.Count == 0) guiLog("Es wurden keine Klassen gefunden!"); //nach Test wieder einkommentieren
             //objects.ForEach(x => Console.WriteLine($"Klasse erstellt: {x.ToString()}"));
             return objects;
         }
