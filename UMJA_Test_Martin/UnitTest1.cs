@@ -9,8 +9,6 @@ namespace UMJA_Test_Martin
     [TestClass]
     public class UnitTest1
     {
-        //public List<UMJA.Utility.JavaObject> javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
-        //Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
         [TestMethod]
         public void TestMethod1() //Check if projectforder exists  !!!Wichtig alle Aufrufe der Methode guiLog müssen beim Testen auskommentiert werden!!!
@@ -19,7 +17,7 @@ namespace UMJA_Test_Martin
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
             bool expRes = true;
-            bool res = false; 
+            bool res = false;
             if (Directory.Exists(@"C:\Users\mgebh\Desktop\Test1")) res = true;
 
             Assert.AreEqual(expRes, res);
@@ -62,7 +60,7 @@ namespace UMJA_Test_Martin
 
             bool expRes = true;
             bool res = false;
-            if (Directory.Exists(@"C:\Users\mgebh\Desktop\Test1\net/htlgrieskirchen/test1")) res = true;
+            if (Directory.Exists(@"C:\Users\mgebh\Desktop\Test1\net\htlgrieskirchen\test1")) res = true;
 
             Assert.AreEqual(expRes, res);
         }
@@ -76,10 +74,45 @@ namespace UMJA_Test_Martin
 
             bool expRes = true;
             bool res = false;
-            if (File.Exists(@"C:\Users\mgebh\Desktop\Test1\net/htlgrieskirchen/test1\Student.java") &&
-                File.Exists(@"C:\Users\mgebh\Desktop\Test1\net/htlgrieskirchen/test1\School.java")) res = true;
+            if (File.Exists(@"C:\Users\mgebh\Desktop\Test1\net\htlgrieskirchen\test1\Student.java") &&
+                File.Exists(@"C:\Users\mgebh\Desktop\Test1\net\htlgrieskirchen\test1\School.java")) res = true;
 
             Assert.AreEqual(expRes, res);
+        }
+
+        [TestMethod]
+        public void ParseVariables1() //Check variables  
+        {
+            var variables = UMJA.Utility.Variable.ParseVariables("< y:AttributeLabel > +city : String");
+
+            
+            bool result = false;
+
+            foreach (var variable in variables)
+            {
+                if (variable.IsFinal == false && variable.IsPrivate == false &&
+                    variable.IsStatic == false && variable.Name == "city" && variable.ObjectType == "String"
+                    && variable.DefinedValue == null) result = true; 
+            }
+
+            Assert.AreEqual(true, result);
+        }
+
+        public void ParseVariables2() //Check variables  
+        {
+            var variables = UMJA.Utility.Variable.ParseVariables("< y:AttributeLabel > +city : String");
+
+
+            bool result = false;
+
+            foreach (var variable in variables)
+            {
+                if (variable.IsFinal == false && variable.IsPrivate == false &&
+                    variable.IsStatic == false && variable.Name == "city" && variable.ObjectType == "String"
+                    && variable.DefinedValue == null) result = true;
+            }
+
+            Assert.AreEqual(true, result);
         }
     }
 }

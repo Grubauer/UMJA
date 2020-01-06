@@ -45,7 +45,7 @@ namespace UMJA.Utility
                 }
 
             }
-
+            
             return variables;
         }
     }
