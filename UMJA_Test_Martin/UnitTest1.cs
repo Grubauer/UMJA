@@ -13,7 +13,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void TestMethod1() //Check if projectforder exists  !!!Wichtig alle Aufrufe der Methode guiLog müssen beim Testen auskommentiert werden!!!
         {
-            var javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
+            var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
             bool expRes = true;
@@ -26,7 +26,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void TestMethod2() //Check folders1  
         {
-            var javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
+            var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
 
@@ -40,7 +40,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void TestMethod3() //Check folders2 
         {
-            var javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
+            var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
 
@@ -54,7 +54,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void TestMethod4() //Check folders3  
         {
-            var javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
+            var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
 
@@ -68,7 +68,7 @@ namespace UMJA_Test_Martin
         [TestMethod]
         public void TestMethod5() //Check files  
         {
-            var javaObject = Logic.ReadDocument(@"E:\4HTL\AUD\UMLS\Test1.graphml");
+            var javaObject = Logic.ReadDocument(@"Test1.graphml");
             Logic.CreateProject(javaObject, @"C:\Users\mgebh\Desktop\", "Test1");
 
 
