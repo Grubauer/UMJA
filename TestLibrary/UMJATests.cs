@@ -36,11 +36,28 @@ namespace TestLibrary {
 
             Assert.Equal(expectedName, name);
 
-            Assert.Equal(variables.Count, expectedVariableCount);
+            Assert.Equal(expectedVariableCount, variables.Count);
             Assert.True(variables.Select(x => x.Name).Contains(expectedVariableName1));
             Assert.True(variables.Select(x => x.Name).Contains(expectedVariableName2));
 
-            Assert.Equal(methods.Count, expectedMethodCount);
+            Assert.Equal(expectedMethodCount, methods.Count);
+            Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName1));
+            Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName2));
+            Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName3));
+
+        }
+
+        [Fact]
+        public void T02_TestParseMethod() {
+            string methodString = "+ setName(name: String) : void\r\n+ setPrice(price: String) : void\r\n+ toString() : String";
+            var methods = Method.ParseMethods(methodString);
+
+            int expectedCount = 3;
+            string expectedMethodName1 = "setName";
+            string expectedMethodName2 = "setPrice";
+            string expectedMethodName3 = "toString";
+
+            Assert.Equal(expectedCount, methods.Count);
             Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName1));
             Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName2));
             Assert.True(methods.Select(x => x.Name).Contains(expectedMethodName3));
