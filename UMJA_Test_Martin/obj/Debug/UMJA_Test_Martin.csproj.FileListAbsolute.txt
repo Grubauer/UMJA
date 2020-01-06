@@ -17,3 +17,7 @@ C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\obj\Debug\UMJA_Test_Martin
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\obj\Debug\UMJA_Test_Martin.csproj.CopyComplete
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\obj\Debug\UMJA_Test_Martin.dll
 C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\obj\Debug\UMJA_Test_Martin.pdb
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\bin\Debug\xunit.runner.reporters.net452.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\bin\Debug\xunit.runner.utility.net452.dll
+C:\Users\mgebh\Documents\GitHub\UMJA\UMJA_Test_Martin\bin\Debug\xunit.abstractions.dll
