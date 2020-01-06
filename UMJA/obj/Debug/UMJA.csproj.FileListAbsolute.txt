@@ -60,3 +60,13 @@ C:\Users\isabe\Documents\Schule\HTL\AUD\UMJA\UMJA\obj\Debug\UMJA.csproj.Generate
 C:\Users\isabe\Documents\Schule\HTL\AUD\UMJA\UMJA\obj\Debug\UMJA.csproj.CopyComplete
 C:\Users\isabe\Documents\Schule\HTL\AUD\UMJA\UMJA\obj\Debug\UMJA.exe
 C:\Users\isabe\Documents\Schule\HTL\AUD\UMJA\UMJA\obj\Debug\UMJA.pdb
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.abstractions.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.runner.reporters.net452.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.runner.utility.net452.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.assert.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.core.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.execution.desktop.dll
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.assert.xml
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.core.xml
+C:\Users\max\source\repos\UMJA\UMJA\UMJA\bin\Debug\xunit.execution.desktop.xml

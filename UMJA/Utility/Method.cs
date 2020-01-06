@@ -77,10 +77,11 @@ namespace UMJA.Utility
                         methods.Add(ParseNormalMethod(methodString, false));
                     }
 
-                    return methods;
+                   
                 }
+                return methods;
             }
-            return new List<Method>();
+            
        
             
         }
