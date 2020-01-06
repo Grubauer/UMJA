@@ -184,15 +184,21 @@ namespace UMJA
             objects.Where(x => x.Implements.Count > 0 && x.GetType().ToString().Equals("UMJA.Utility.JavaClass"))
                 .Select(x => (JavaClass)x)
                 .ToList()
-                .ForEach(x => {
+                .ForEach(x =>
+                {
                     List<Method> implementedMethods = new List<Method>();
                     x.Implements.ForEach(y => implementedMethods.AddRange(((JavaInterface)y).Methods));
                     implementedMethods.ForEach(y => y.Override = true);
                     x.Methods.AddRange(implementedMethods);
 
-                    });
+                });
 
-            // TODO des geht irgendwie beim test ned      objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
+
+
+            objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
+
+
+
             if (objects.Count == 0) guiLog("Es wurden keine Klassen gefunden!");
             //objects.ForEach(x => Console.WriteLine($"Klasse erstellt: {x.ToString()}"));
             return objects;
@@ -200,7 +206,16 @@ namespace UMJA
 
         private static void guiLog(string msg)
         {
-            (Application.Current.Windows[0] as MainWindow).lsbLogConsole.Items.Add(msg);
+            // try catch nur wegen Unit-Tests
+            try
+            {
+                (Application.Current.Windows[0] as MainWindow).lsbLogConsole.Items.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
         }
 
         public static void CreateProject(List<JavaObject> javaObjects, string targetpath, string folderName)
@@ -276,7 +291,13 @@ namespace UMJA
                                 var priv = (vari.IsPrivate) ? "private" : "public";
                                 var stat = (vari.IsStatic) ? "static" : "";
 
-                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name + ";");
+                                string equalsPart = (vari.DefinedValue != null && vari.DefinedValue != string.Empty) ? $" = {vari.DefinedValue}" : "";
+                                if (equalsPart.Equals("") && vari.IsFinal)
+                                    equalsPart = $" = new {vari.ObjectType}()";
+
+                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name + equalsPart + ";");
+
+             
                             }
                             foreach (var method in javaClass.Methods)
                             {
@@ -302,10 +323,10 @@ namespace UMJA
                                 else if (method.Override)
                                 {
                                     sw.WriteLine(Environment.NewLine + "@Override");
-                                    sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {" 
-                                        + Environment.NewLine 
+                                    sw.WriteLine(priv + " " + stat + " " + " " + method.ReturnObject + " " + method.Name + "(" + parameter + ")" + " {"
+                                        + Environment.NewLine
                                         + "    throw new UnsupportedOperationException(\"Not supported yet.\"); //To change body of generated methods, choose Tools | Templates."
-                                        + Environment.NewLine 
+                                        + Environment.NewLine
                                         + "}");
                                 }
                                 else if (method.Name.StartsWith("get") && javaClass.Variables.FindAll(x => method.Name.ToLower().Contains(x.Name.ToLower())).Count != 0)
@@ -348,6 +369,7 @@ namespace UMJA
 
 
                             sw.WriteLine("}");
+                            guiLog($"Die Klasse {javaClass.Name} wurde Compiliert");
                         }
 
                         else if (item.GetType().ToString().Equals("UMJA.Utility.JavaEnumeration"))
@@ -356,6 +378,7 @@ namespace UMJA
                             sw.WriteLine("public enum " + item.Name + "{");
                             sw.WriteLine(javaEnumeration.Values);
                             sw.WriteLine("}");
+                            guiLog($"Das Enum {javaEnumeration.Name} wurde Compiliert");
                         }
 
                         else if (item.GetType().ToString().Equals("UMJA.Utility.JavaInterface"))
@@ -368,7 +391,11 @@ namespace UMJA
                                 var priv = (vari.IsPrivate) ? "private" : "public";
                                 var stat = (vari.IsStatic) ? "static" : "";
 
-                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name + ";");
+                                string equalsPart = (vari.DefinedValue != null && vari.DefinedValue != string.Empty) ? $" = {vari.DefinedValue}" : "";
+                                if (equalsPart.Equals("") && vari.IsFinal)
+                                    equalsPart = $" = new {vari.ObjectType}()";
+
+                                sw.WriteLine(priv + " " + stat + " " + final + " " + vari.ObjectType + " " + vari.Name + equalsPart + ";");
 
                             }
                             foreach (var method in javaClass.Methods)
@@ -393,6 +420,7 @@ namespace UMJA
 
 
                             sw.WriteLine("}");
+                            guiLog($"Das Interface {javaClass.Name} wurde Compiliert");
                         }
 
 
@@ -402,7 +430,9 @@ namespace UMJA
 
                     }
                 }
+
             }
+            guiLog("Das Projekt wurde erfolgreich erstellt!");
         }
 
 
