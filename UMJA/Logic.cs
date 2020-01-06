@@ -192,7 +192,7 @@ namespace UMJA
 
                     });
 
-            objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
+        //TODO: des geht beim Test irgendwie ned objects.ForEach(x => guiLog($"Klasse erstellt: {x.ToString()}"));
             if (objects.Count == 0) guiLog("Es wurden keine Klassen gefunden!");
             //objects.ForEach(x => Console.WriteLine($"Klasse erstellt: {x.ToString()}"));
             return objects;
